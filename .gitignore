@@ -1,0 +1,11 @@
+# Exclude these files from the git repo
+wp-content/cache/*
+wp-content/plugins/wp-minify/cache/*
+wp-content/upgrade/*
+wp-content/uploads/*
+sitemap.*
+
+*.esproj
+.DS_Store
+Thumbs.db
+*.log
