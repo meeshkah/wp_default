@@ -4,6 +4,7 @@ wp-content/plugins/wp-minify/cache/*
 wp-content/upgrade/*
 wp-content/uploads/*
 sitemap.*
+.sass-cache/*
 
 *.esproj
 .DS_Store
