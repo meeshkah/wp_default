@@ -5,6 +5,9 @@ wp-content/upgrade/*
 wp-content/uploads/*
 sitemap.*
 .sass-cache
+wp-config.local.php
+wp-config.stage.php
+wp-config.production.php
 
 *.esproj
 .DS_Store

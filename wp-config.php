@@ -25,24 +25,32 @@ define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content');
 /** Wordpress default theme **/
 define('WP_DEFAULT_THEME', 'wp_default');
 
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define('DB_NAME', 'database_name_here');
 
-/** MySQL database username */
-define('DB_USER', 'username_here');
+/** Environments settings **/
+if ( file_exists( dirname( __FILE__ ) . '/wp-config.local.php' ) ) {
 
-/** MySQL database password */
-define('DB_PASSWORD', 'password_here');
+    // Local Environment
+    define('ENVIRONMENT', 'local');
+    define('WP_DEBUG', true);
 
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
+    require( 'wp-config.local.php' );
 
-/** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+} elseif ( file_exists( dirname( __FILE__ ) . '/wp-config.stage.php' ) ) {
 
-/** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+    // Playground Environment
+    define('ENVIRONMENT', 'staging');
+    define('WP_DEBUG', true);
+
+    require( 'wp-config.stage.php' );
+
+} elseif ( file_exists( dirname( __FILE__ ) . '/wp-config.production.php' ) ) {
+
+    // Production Environment
+    define('ENVIRONMENT', 'production');
+    define('WP_DEBUG', false);
+
+    require( 'wp-config.production.php' );
+}
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -65,14 +73,6 @@ define('NONCE_SALT',       'put your unique phrase here');
 /**#@-*/
 
 /**
- * WordPress Database Table prefix.
- *
- * You can have multiple installations in one database if you give each a unique
- * prefix. Only numbers, letters, and underscores please!
- */
-$table_prefix  = 'wp_';
-
-/**
  * WordPress Localized Language, defaults to English.
  *
  * Change this to localize WordPress. A corresponding MO file for the chosen
@@ -81,15 +81,6 @@ $table_prefix  = 'wp_';
  * language support.
  */
 define('WPLANG', '');
-
-/**
- * For developers: WordPress debugging mode.
- *
- * Change this to true to enable the display of notices during development.
- * It is strongly recommended that plugin and theme developers use WP_DEBUG
- * in their development environments.
- */
-define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
 

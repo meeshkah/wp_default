@@ -162,4 +162,13 @@ function bones_wpsearch($form) {
 } // don't remove this bracket!
 
 
+/************ ONLY REGISTERED USERS **************/
+
+function password_protected(){
+    if(!is_user_logged_in() && ENVIRONMENT == 'staging'){
+        wp_redirect(get_option('siteurl') .'/wp-login.php');
+    }
+}
+add_action('template_redirect', 'password_protected');
+
 ?>
