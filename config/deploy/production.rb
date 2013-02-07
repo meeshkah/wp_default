@@ -20,4 +20,4 @@ namespace :myproject_production do
     end
 end
 
-after "deploy:symlink", "myproject_production:symlink"
+after "deploy:create_symlink", "myproject_production:symlink"

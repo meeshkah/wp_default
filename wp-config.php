@@ -19,7 +19,7 @@ define('WP_SITEURL', 'http://' . $_SERVER['SERVER_NAME'] . '/wordpress');
 define('WP_HOME',    'http://' . $_SERVER['SERVER_NAME']);
  
 /** Wordpress custom content directory **/ 
-define('WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] . '/wp-content');
+define('WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] . 'wp-content');
 define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content');
  
 /** Wordpress default theme **/
@@ -35,13 +35,13 @@ if ( file_exists( dirname( __FILE__ ) . '/wp-config.local.php' ) ) {
 
     require( 'wp-config.local.php' );
 
-} elseif ( file_exists( dirname( __FILE__ ) . '/wp-config.stage.php' ) ) {
+} elseif ( file_exists( dirname( __FILE__ ) . '/wp-config.staging.php' ) ) {
 
     // Playground Environment
     define('ENVIRONMENT', 'staging');
     define('WP_DEBUG', true);
 
-    require( 'wp-config.stage.php' );
+    require( 'wp-config.staging.php' );
 
 } elseif ( file_exists( dirname( __FILE__ ) . '/wp-config.production.php' ) ) {
 
