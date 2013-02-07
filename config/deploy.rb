@@ -15,7 +15,7 @@ set :git_enable_submodules, 1
 							  # to be present if remote is present
 set :use_sudo, false
 #set :user, "user"
-set :port, 22 # redundant if ssh port is 22 (default), yet useful if not
+set :port, 22 # redundant if ssh port is 22 (default), yet useful if not.
 			  # change accordingly
 
 set :deploy_via, :remote_cache
