@@ -11,28 +11,32 @@ This is based on the examples given in these articles:
 
 How to
 ------
-* __Prerequisites__
+## Prerequisites ##
 - RVM (https://rvm.io/)
 - Latest Git on both local machine and the server (for server-side install read http://ionrails.com/2009/07/15/installing-a-private-git-repository-on-your-shared-hosting-account-bluehost/)
 - NGINX
-* __Local development__
+## Local development ##
 - Clone the repository into an empty folder
-- Initiate submodules by invoking "git submodule update --init --recursive"
+- Change the origin of the repository, i.e. 
+	git remote rename origin temp
+	git remote add origin <repo_address>
+	git remote rm temp
+- Initiate submodules by invoking 
+	git submodule update --init --recursive
 - Run 'bundle install' from the project folder
 - Change the salts in the wp-config.php file (use this link for convenience https://api.wordpress.org/secret-key/1.1/salt/)
 - Create wp-config.local.php using the wp-config.default.php template.
 - To update Wordpress use 'git fetch --tags' from Wordpress directory, then 'git checkout <version>' and 'git submodule update wordpress' from main folder
 - Dont't forget about permissions! 
-* __Staging__
+## Staging ##
 - Modify config/deploy/staging.rb file with needed information
 - Run 'cap delpoy:setup'
 - SSH into the server and change the shared wp-config.staging.php with needed database information
 - Run 'cap deploy'
-* __Production__
+## Production ##
 - Same as for staging, but production files are involved
 
 TODO
-
 ----
 
 * Full Capistrano install and deploy for both staging and production
