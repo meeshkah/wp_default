@@ -1,7 +1,7 @@
 Default Wordpress installation
 ------------------------------
 
-Clean Wordpress repository with essential plugins and stripped Bones theme, running on NGINX (+ APC & Varnish in production), ease of deploy with Capistrano.
+Clean Wordpress repository with essential plugins and stripped Bones theme, running on NGINX (+ APC & Varnish in production), ease of install and deploy with Capistrano.
 
 This is based on the examples given in these articles:
 * http://theme.fm/2011/08/tutorial-deploying-wordpress-with-capistrano-2082/
@@ -22,7 +22,7 @@ How to
 - Change the salts in the wp-config.php file (use this link for convenience https://api.wordpress.org/secret-key/1.1/salt/)
 - Create wp-config.local.php using the wp-config.default.php template.
 - To update Wordpress use 'git fetch --tags' from Wordpress directory, then 'git checkout <version>' and 'git submodule update wordpress' from main folder
-- Dont't forget about permissions! (http://stackoverflow.com/questions/2001881/correct-owner-group-permissions-for-apache-2-site-files-folders-under-mac-os-x)
+- Dont't forget about permissions! 
 * __Staging__
 - Modify config/deploy/staging.rb file with needed information
 - Run 'cap delpoy:setup'
@@ -31,7 +31,9 @@ How to
 * __Production__
 - Same as for staging, but production files are involved
 
-TODO:
+TODO
+
 ----
 
+* Full Capistrano install and deploy for both staging and production
 * Database version control
