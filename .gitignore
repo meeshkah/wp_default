@@ -13,3 +13,4 @@ wp-config.production.php
 .DS_Store
 Thumbs.db
 *.log
+Gemfile.lock
