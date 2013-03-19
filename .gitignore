@@ -9,6 +9,8 @@ wp-config.local.php
 wp-config.stage.php
 wp-config.production.php
 
+Gemfile.lock
+
 *.esproj
 .DS_Store
 Thumbs.db

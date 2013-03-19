@@ -1,7 +1,7 @@
 Default Wordpress installation
 ------------------------------
 
-Clean Wordpress repository with essential plugins and stripped Bones theme
+Clean Wordpress repository with essential plugins and stripped Bones theme, running on NGINX (+ APC & Varnish in production), ease of install and deploy with Capistrano.
 
 This is based on the examples given in these articles:
 * http://theme.fm/2011/08/tutorial-deploying-wordpress-with-capistrano-2082/
@@ -12,17 +12,17 @@ This is based on the examples given in these articles:
 How to
 ------
 * __Prerequisites__
-- My strong advice: do all the Ruby related stuff through RVM (https://rvm.io/)
-- Capistrano (https://github.com/capistrano/capistrano)
-- Railsless-deploy gem (gem install railsless-deploy)
+- RVM (https://rvm.io/)
 - Latest Git on both local machine and the server (for server-side install read http://ionrails.com/2009/07/15/installing-a-private-git-repository-on-your-shared-hosting-account-bluehost/)
+- NGINX
 * __Local development__
 - Clone the repository into an empty folder
 - Initiate submodules by invoking "git submodule update --init --recursive"
+- Run 'bundle install' from the project folder
 - Change the salts in the wp-config.php file (use this link for convenience https://api.wordpress.org/secret-key/1.1/salt/)
 - Create wp-config.local.php using the wp-config.default.php template.
 - To update Wordpress use 'git fetch --tags' from Wordpress directory, then 'git checkout <version>' and 'git submodule update wordpress' from main folder
-- Dont't forget about permissions! (http://stackoverflow.com/questions/2001881/correct-owner-group-permissions-for-apache-2-site-files-folders-under-mac-os-x)
+- Dont't forget about permissions! 
 * __Staging__
 - Modify config/deploy/staging.rb file with needed information
 - Run 'cap delpoy:setup'
@@ -31,8 +31,9 @@ How to
 * __Production__
 - Same as for staging, but production files are involved
 
-TODO:
+TODO
+
 ----
 
+* Full Capistrano install and deploy for both staging and production
 * Database version control
-* Incorporate h5bp ant build script via Capistrano
