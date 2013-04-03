@@ -20,15 +20,10 @@ How to
 ### Local development ###
 - Clone the repository into an empty folder
 - Change the origin of the repository, i.e. 
-```git
-git remote rename origin temp
-git remote add origin <repo_address>
-git remote rm temp
-```
-- Initiate submodules by invoking 
-```git
-git submodule update --init --recursive
-```
+		git remote rename origin temp
+		git remote add origin <repo_address>
+		git remote rm temp
+- Initiate submodules by invoking ```git submodule update --init --recursive```
 - Run 'bundle install' from the project folder
 - Change the salts in the wp-config.php file (use this link for convenience https://api.wordpress.org/secret-key/1.1/salt/)
 - Create wp-config.local.php using the wp-config.default.php template.
@@ -47,5 +42,5 @@ git submodule update --init --recursive
 TODO
 ----
 
-* Full Capistrano install and deploy for both staging and production
-* Database version control
+* [ ] Full Capistrano install and deploy for both staging and production
+* [ ] Database version control

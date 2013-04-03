@@ -161,6 +161,15 @@ function bones_wpsearch($form) {
     return $form;
 } // don't remove this bracket!
 
+/* ***************** METABOXES ********************/
+
+// Initialize the metabox class
+add_action( 'init', 'be_initialize_cmb_meta_boxes', 9999 );
+function be_initialize_cmb_meta_boxes() {
+    if ( !class_exists( 'cmb_Meta_Box' ) ) {
+        require_once( 'library/metaboxes/init.php' );
+    }
+}
 
 /************ ONLY REGISTERED USERS **************/
 
