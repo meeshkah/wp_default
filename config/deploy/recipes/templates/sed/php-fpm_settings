@@ -1,0 +1,3 @@
+s|;emergency_restart_threshold = 0|emergency_restart_threshold = 5|g
+s|;emergency_restart_interval = 0|emergency_restart_interval = 2|g
+s|; events.mechanism = epoll|events.mechanism = epoll|g

@@ -1,0 +1,7 @@
+s|short_open_tag = On|short_open_tag = Off|g
+s|post_max_size = 8M|post_max_size = 15M|g
+s|upload_max_filesize = 2M|upload_max_filesize = 15M|g
+s|;default_charset = "UTF-8"|default_charset = "UTF-8"|g
+s|allow_url_fopen = On|allow_url_fopen = Off|g
+s|default_socket_timeout = 60|default_socket_timeout = 30|g
+s|mysql.allow_persistent = On|mysql.allow_persistent = Off|g

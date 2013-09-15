@@ -1,0 +1,15 @@
+s|;listen.owner = www-data|listen.owner = www-data|g
+s|;listen.group = www-data|listen.group = www-data|g
+s|;listen.mode = 0666|listen.mode = 0666|g
+s|;listen.allowed_clients = 127.0.0.1|listen.allowed_clients = 127.0.0.1|g
+s|pm.max_children = 5|pm.max_children = 50|g
+s|pm.start_servers = 2|pm.start_servers = 15|g
+s|pm.min_spare_servers = 1|pm.min_spare_servers = 5|g
+s|pm.max_spare_servers = 3|pm.max_spare_servers = 25|g
+s|;pm.process_idle_timeout = 10s|pm.process_idle_timeout = 60s|g
+s|;request_terminate_timeout = 0|request_terminate_timeout = 30|g
+s|;security.limit_extensions = .php .php3 .php4 .php5|security.limit_extensions = .php|g
+s|;php_flag[display_errors] = off|php_flag[display_errors] = off|g
+s|;php_admin_value[error_log] = /var/log/fpm-php.www.log|php_admin_value[error_log] = /var/log/fpm-php.www.log|g
+s|;php_admin_flag[log_errors] = on|php_admin_flag[log_errors] = on|g
+s|;php_admin_value[memory_limit] = 32M|php_admin_value[memory_limit] = 128M|g
