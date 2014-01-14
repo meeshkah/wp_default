@@ -1,0 +1,7 @@
+s|;opcache.enable=0|opcache.enable=1|g
+s|;opcache.enable_cli=0|opcache.enable_cli=1|g
+s|;opcache.memory_consumption=64|opcache.memory_consumption=128|g
+s|;opcache.interned_strings_buffer=4|opcache.interned_strings_buffer=8|g
+s|;opcache.max_accelerated_files=2000|opcache.max_accelerated_files=4000|g
+s|;opcache.revalidate_freq=2|opcache.revalidate_freq=60|g
+s|;opcache.fast_shutdown=0|opcache.fast_shutdown=1|g
