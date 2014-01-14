@@ -19,12 +19,15 @@ define('WP_SITEURL', 'http://' . $_SERVER['SERVER_NAME'] . '/wordpress');
 define('WP_HOME',    'http://' . $_SERVER['SERVER_NAME']);
  
 /** Wordpress custom content directory **/ 
-define('WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] . 'wp-content');
+define('WP_CONTENT_DIR', (is_link($_SERVER['DOCUMENT_ROOT']) ? readlink($_SERVER['DOCUMENT_ROOT']) : $_SERVER['DOCUMENT_ROOT']) . '/wp-content');
 define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content');
  
 /** Wordpress default theme **/
 define('WP_DEFAULT_THEME', 'wp_default');
 
+define('WP_MEMORY_LIMIT', '64M');
+
+define('FS_METHOD', 'direct');
 
 /** Environments settings **/
 if ( file_exists( dirname( __FILE__ ) . '/wp-config.local.php' ) ) {

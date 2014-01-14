@@ -2,6 +2,10 @@ set :stages, %w(production staging)
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
 
+%w(base nginx php mysql misc).each do |to_load|
+  load "config/deploy/recipes/#{to_load}"
+end
+
 default_run_options[:pty] = true  # Must be set for the password prompt
                                   # from git to work
 set :application, "your-application-name"
@@ -9,19 +13,22 @@ set :repository, "git@github.com:you/your-project.git"
 set :scm, "git"
 set :branch, "master"
 set :git_enable_submodules, 1
-#set :scm_command, "~/bin/git" # Specifies the path to git on the REMOTE
-							  # machine.
-#set :local_scm_command, "git" # Specifies the local git command. Needs
-							  # to be present if remote is present
+# set :scm_command, "~/bin/git" # Specifies the path to git on the REMOTE
+							                  # machine.
+# set :local_scm_command, "git" # Specifies the local git command. Needs
+							                  # to be present if remote is present
 set :use_sudo, false
-#set :user, "user"
+# set :user, "user"
 set :port, 22 # redundant if ssh port is 22 (default), yet useful if not.
 
-set :deploy_via, :remote_cache
-#set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules"] # Uncomment if you
+# set :deploy_via, :remote_cache
+# set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules"] # Uncomment if you
 																	  # have permissions
 																	  # to use rsync remotely
-set :keep_releases, 2
+set :keep_releases, 3
+
+set :mysql_password, ('a'..'z').to_a.shuffle[0,8].join # Random password for MySQL installation
+set(:mysql_entered_password) { Capistrano::CLI.password_prompt("MYSQL password: ") }
 
 namespace :deploy do
   

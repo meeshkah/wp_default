@@ -1,4 +1,4 @@
-set :deploy_to, "/srv/www/#{application}_staging/docroot"
+set :deploy_to, "/srv/www/#{application}_staging"
 server "staging.example.org", :web, :app, :db, primary: true
 
 # Disable APC cache for staging
@@ -6,7 +6,7 @@ server "staging.example.org", :web, :app, :db, primary: true
 
 
 
-namespace :staging do
+namespace :wp_staging do
 
 	desc "Copy wp-config.staging.php if doesn't exist"
     task :config, roles: :app do
