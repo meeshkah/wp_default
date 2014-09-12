@@ -81,7 +81,7 @@ types {
         # Fonts
 
         application/vnd.ms-fontobject           eot;
-        application/x-font-ttf                  ttf;
-        font/opentype                           ott;
+        font/ttf                                ttf;
+        font/opentype                           otf;
         application/font-woff                   woff;
 }
