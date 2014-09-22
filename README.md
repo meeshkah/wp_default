@@ -27,7 +27,7 @@ How to
 - Run 'bundle install' from the project folder
 - Change the salts in the wp-config.php file (use this link for convenience https://api.wordpress.org/secret-key/1.1/salt/)
 - Create wp-config.local.php using the wp-config.default.php template.
-- To update Wordpress use 'git fetch --tags' from Wordpress directory, then 'git checkout <version>' and 'git submodule update wordpress' from main folder
+- To update Wordpress use 'git fetch --tags' from Wordpress directory, then 'git checkout <version>','cd ..', 'git add -A' and commit
 - Dont't forget about permissions!
 
 ### Staging ###
