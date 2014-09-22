@@ -24,11 +24,11 @@ LAYOUT & GRID STYLES
 *********************/
 
 .wrap {
-	max-width: 1140px;
+	width: 760px;
 }
 
 /*********************
-HEADER SYTLES
+HEADER STYLES
 *********************/
 
 .header {}
@@ -40,9 +40,11 @@ NAVIGATION STYLES
 *********************/
 
 .nav {
-	background: #eee;
 	border: 0;
-
+	ul {
+		background:$black;
+		margin-top:0;
+	}
 	li {
 		float: left;
 		position: relative;
@@ -55,8 +57,8 @@ NAVIGATION STYLES
 			has the possibility of being a mobile device.
 			*/
 			&:hover, &:focus {
-				background-color: #dedede;
-
+				color: $white;
+				text-decoration: underline;
 			}
 		}
 
@@ -68,11 +70,11 @@ NAVIGATION STYLES
 		*/
 		ul.sub-menu,
 		ul.children {
-			width: 200px;
+			margin-top: 0;
 			border: 1px solid #ccc;
 			border-top: 0;
 			position: absolute;
-			display: none;
+			visibility: hidden;
 			z-index: 8999;
 
 			li {
@@ -104,21 +106,24 @@ NAVIGATION STYLES
 				just remember deeper menus suck
 				for usability. k, bai.
 				*/
-				ul {}
+				ul {
+					top:0;
+					left:100%;
+				}
 			}
 
 			/* highlight sub-menu current page */
 			li.current-menu-item,
 			li.current_page_item,
-			li.current-page-ancestor {
+			li.current_page_ancestor {
 				a {}
 			}
 		}
 
 		/* showing sub-menus */
-		&:hover ul {
+		&:hover > ul {
 			top: auto;
-			display: block;
+			visibility:visible;
 		}
 
 	} /* end .menu ul li */
@@ -126,7 +131,7 @@ NAVIGATION STYLES
 	/* highlight current page */
 	li.current-menu-item,
 	li.current_page_item,
-	li.current-page-ancestor {
+	li.current_page_ancestor {
 		a {}
 	}  /* end current highlighters */
 
