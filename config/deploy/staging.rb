@@ -9,9 +9,18 @@ server "staging.example.org", :web, :app, :db, primary: true
 namespace :wp_staging do
 
 	desc "Copy wp-config.staging.php if doesn't exist"
-    task :config, roles: :app do
-       # if the shared config file does not exist, copy the default config to shared folder
-       run "if [[ -f #{shared_path}/wp-config.staging.php ]]; then echo 'Config file exists'; else cp #{release_path}/wp-config.default.php #{shared_path}/wp-config.staging.php; fi"
+    task :missing, roles: :app do
+      unless remote_file_exists? "#{shared_path}/wp-config.staging.php"
+        set :mysql_password, remote_file_exists?("/tmp/mysql_pass") ? remote_file_read("/tmp/mysql_pass") : mysql_entered_password
+        template "app.erb", "#{shared_path}/wp-config.staging.php"
+        if remote_file_exists? "/tmp/mysql_pass"
+          run "#{sudo} rm /tmp/mysql_pass && echo \"Temporary password file deleted. Config set up\"" 
+        else 
+          "Config set up"
+        end
+      else
+        puts "Config file already exists, carrying on..."
+      end
     end
 	
 	desc "Link shared config to the current deployment"
@@ -20,4 +29,4 @@ namespace :wp_staging do
     end
 end
 
-after "deploy:update_code", "staging:missing", "staging:symlink" 
+after "deploy:update_code", "wp_staging:missing", "wp_staging:symlink" 

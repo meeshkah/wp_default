@@ -8,7 +8,11 @@ namespace :wp_production do
       unless remote_file_exists? "#{shared_path}/wp-config.production.php"
         set :mysql_password, remote_file_exists?("/tmp/mysql_pass") ? remote_file_read("/tmp/mysql_pass") : mysql_entered_password
         template "app.erb", "#{shared_path}/wp-config.production.php"
-        run "#{sudo} rm /tmp/mysql_pass && echo \"Temporary password file deleted\""
+        if remote_file_exists? "/tmp/mysql_pass"
+          run "#{sudo} rm /tmp/mysql_pass && echo \"Temporary password file deleted. Config set up\"" 
+        else 
+          "Config set up"
+        end
       else
         puts "Config file already exists, carrying on..."
       end

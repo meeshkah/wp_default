@@ -3,4 +3,4 @@
 	url = git://github.com/WordPress/WordPress.git
 [submodule "wp-content/themes/wp_default/library/metaboxes"]
 	path = wp-content/themes/wp_default/library/metaboxes
-	url = git@github.com:jaredatch/Custom-Metaboxes-and-Fields-for-WordPress.git
+	url = https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress.git
