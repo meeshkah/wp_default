@@ -18,7 +18,7 @@ set :git_enable_submodules, 1
 # set :local_scm_command, "git" # Specifies the local git command. Needs
 							                  # to be present if remote is present
 set :use_sudo, false
-# set :user, "user"
+set :user, "root"
 set :port, 22 # redundant if ssh port is 22 (default), yet useful if not.
 
 # set :deploy_via, :remote_cache
@@ -33,12 +33,12 @@ set :mysql_password, ('a'..'z').to_a.shuffle[0,8].join # Random password for MyS
 set(:mysql_entered_password) { Capistrano::CLI.password_prompt("MYSQL password: ") }
 
 namespace :deploy do
-  
+
   desc "Create releases directory"
   task :create_releases_dir, :except => {:no_release => true} do
     run "mkdir -p #{fetch :releases_path} && chmod g-w #{fetch :releases_path}"
   end
-  
+
   desc "Create shared uploads directory"
   task :create_uploads_dir, :except => {:no_release => true} do
     run "mkdir -p #{fetch :shared_path}/uploads"
@@ -48,7 +48,7 @@ namespace :deploy do
   task :change_uploads_owner, :except => {:no_release => true} do
     run "chown #{fetch :server_user} #{fetch :shared_path}/uploads"
   end
-  
+
 end
 
 after "deploy:setup", "deploy:create_releases_dir", "deploy:create_uploads_dir", "deploy:change_uploads_owner"

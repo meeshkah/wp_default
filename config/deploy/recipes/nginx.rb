@@ -21,7 +21,6 @@ namespace :nginx do
     server_template
     run "#{sudo} mv /tmp/nginx_conf /etc/nginx/sites-available/#{application}"
     run "#{sudo} ln -nfs /etc/nginx/sites-available/#{application} /etc/nginx/sites-enabled/#{application}"
-    run "#{sudo} rm -f /etc/nginx/sites-enabled/default"
     restart
   end
   after "deploy:setup", "nginx:setup"
@@ -34,7 +33,7 @@ namespace :nginx do
       template "nginx.erb", "/tmp/nginx_conf"
     end
   end
-  
+
   %w[start stop restart].each do |command|
     desc "#{command} nginx"
     task command, roles: :web do
